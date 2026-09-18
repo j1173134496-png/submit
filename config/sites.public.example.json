@@ -1,0 +1,34 @@
+{
+  "sites": [
+    {
+      "site_key": "example_site",
+      "site_name": "Example Site",
+      "project_name": "Example Solar Project",
+      "aliases": ["example"],
+      "meter_no": "EXAMPLE-METER-001",
+      "company_name": "Example Renewable Energy Co., Ltd.",
+      "multiplier": "1",
+      "school_base_price": "0.0000",
+      "school_discount_rate": "1.0",
+      "template_dir": "templates/example_site",
+      "detail_workbook": "detail.xlsx",
+      "detail_sheet": "1",
+      "summary_workbook": "summary.xlsx",
+      "summary_sheet": "Sheet1",
+      "detail_profile": "single_detail_row",
+      "summary_profile": "meter_rows_summary",
+      "detail_start_row": 5,
+      "summary_start_row": 4,
+      "detail_company_cell": "A6",
+      "detail_statement_date_cell": "A7",
+      "issuer_aliases": ["Example"],
+      "template_profile_key": null,
+      "detail_profile_key": null,
+      "summary_profile_key": null,
+      "meter_topology_profile": "single_meter_school",
+      "summary_end_column": "M",
+      "summary_merge_columns": ["I", "M"],
+      "summary_site_name_cell": "A1"
+    }
+  ]
+}

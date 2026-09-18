@@ -1,0 +1,9 @@
+{
+  "action": "run_task",
+  "task_id": "pv_xinan_high_school_2026_05_001",
+  "runtime_root": "runtime",
+  "site_key": "xinan_high_school",
+  "month": "2026-05",
+  "mode": "strict",
+  "request_id": "gw-run-pv_xinan_high_school_2026_05_001"
+}

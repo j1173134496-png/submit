@@ -1,0 +1,9 @@
+{
+  "confirmed_by": "operator_001",
+  "confirmed_at": "2026-07-14T10:00:00+08:00",
+  "fields": {
+    "unknown_field": {
+      "value": 1
+    }
+  }
+}

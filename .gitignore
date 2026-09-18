@@ -1,0 +1,43 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local secrets and machine-specific settings
+.env
+.env.*
+!.env.example
+
+# Local runtime outputs
+outputs/
+tmp/
+logs/
+runtime/
+.tmp/
+.openclaw-workspace/
+*.lock
+*.jsonl
+
+# Private site configuration and workbook templates
+config/sites.json
+config/site_registration_audit.jsonl
+config/templates/
+config/monthly_regression_manifest.json
+
+# Customer source documents and internal intake material
+*.pdf
+*.xlsx
+*.xls
+*.docx
+需求/
+runtime/service/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

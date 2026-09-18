@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://submit-flow-agent.local/contracts/worker_task.schema.json",
+  "title": "Submit Flow Agent Worker Task",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "task_id", "runtime_root"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["run_task", "retry_failed_task", "confirm_task", "show_task", "list_outputs"]
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_.-]+$"
+    },
+    "runtime_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "site_key": {
+      "type": "string",
+      "minLength": 1,
+      "default": "xinan_high_school"
+    },
+    "month": {
+      "type": "string",
+      "pattern": "^20[0-9]{2}-(0[1-9]|1[0-2])$"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["strict", "manual", "query"]
+    },
+    "confirmed_data": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"action": {"const": "confirm_task"}}, "required": ["action"]},
+      "then": {
+        "required": ["confirmed_data"],
+        "properties": {"mode": {"const": "manual"}}
+      }
+    },
+    {
+      "if": {"properties": {"action": {"enum": ["run_task", "retry_failed_task"]}}, "required": ["action"]},
+      "then": {
+        "properties": {"mode": {"enum": ["strict"]}}
+      }
+    },
+    {
+      "if": {"properties": {"action": {"enum": ["show_task", "list_outputs"]}}, "required": ["action"]},
+      "then": {
+        "not": {"required": ["confirmed_data"]},
+        "properties": {"mode": {"enum": ["query"]}}
+      }
+    }
+  ],
+  "description": "Gateway-to-Worker task contract. Worker must reject unknown actions and any extra fields such as command, shell, prompt, or user_text."
+}

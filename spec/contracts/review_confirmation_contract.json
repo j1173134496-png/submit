@@ -1,0 +1,66 @@
+{
+  "contract_version": "1.0",
+  "allowed_fields": {
+    "site_key": {"json_types": ["string"]},
+    "site_name": {"json_types": ["string"]},
+    "project_name": {"json_types": ["string"]},
+    "month": {"json_types": ["string"]},
+    "meter_no": {"json_types": ["string"]},
+    "period_start": {"json_types": ["string"]},
+    "period_end": {"json_types": ["string"]},
+    "previous_reading": {"json_types": ["number"]},
+    "current_reading": {"json_types": ["number"]},
+    "multiplier": {"json_types": ["number"]},
+    "total_generation_kwh": {"json_types": ["number"]},
+    "grid_export_kwh": {"json_types": ["number"]},
+    "grid_price": {"json_types": ["number"]},
+    "grid_fee": {"json_types": ["number"]},
+    "school_base_price": {"json_types": ["number"]},
+    "school_discount_rate": {"json_types": ["number"]},
+    "company_name": {"json_types": ["string"]},
+    "statement_date": {"json_types": ["string"]}
+  },
+  "reason_enum": [
+    "low_confidence",
+    "field_missing",
+    "business_validation_failed"
+  ],
+  "review_issue": {
+    "required": [
+      "field",
+      "reason",
+      "message",
+      "source_file",
+      "page",
+      "raw_text",
+      "current_value",
+      "confidence",
+      "confirmable_fields"
+    ],
+    "confirmable_fields": "subset of allowed_fields; empty means display-only"
+  },
+  "confirmed_data": {
+    "required": ["confirmed_by", "confirmed_at", "fields"],
+    "allowed_top_level_fields": ["confirmed_by", "confirmed_at", "fields"],
+    "field_patch": {
+      "required": ["value"],
+      "allowed_fields": ["value", "reason"],
+      "reason_json_types": ["string"]
+    }
+  },
+  "business_validation_confirmable_fields": {
+    "required_fields": [],
+    "generation_formula": [
+      "previous_reading",
+      "current_reading",
+      "multiplier",
+      "total_generation_kwh"
+    ],
+    "school_consumption_non_negative": ["total_generation_kwh", "grid_export_kwh"],
+    "school_discount_price": [],
+    "grid_fee": ["grid_export_kwh", "grid_price", "grid_fee"],
+    "school_fee": [],
+    "total_fee": [],
+    "month_period": ["month", "period_start", "period_end"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "action": "confirm_task",
+  "task_id": "pv_xinan_high_school_2026_05_001",
+  "runtime_root": "runtime",
+  "confirmed_data": "runtime/tasks/pv_xinan_high_school_2026_05_001/confirmed_data.json",
+  "mode": "manual",
+  "request_id": "gw-confirm-pv_xinan_high_school_2026_05_001"
+}

@@ -1,0 +1,2 @@
+﻿"""OCR adapter boundary."""
+

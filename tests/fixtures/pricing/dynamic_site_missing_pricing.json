@@ -1,0 +1,11 @@
+﻿{
+  "site_key": "new_dynamic_site",
+  "month": "2026-05",
+  "proposal": {
+    "discount_rate": "9.5折"
+  },
+  "expected_status": "missing_pricing_fields",
+  "missing_fields": ["effective_unit_price"],
+  "expected_proposal_id": null,
+  "notes": "Dynamic sites with pricing_required=true must not seed pricing from template profile defaults or other sites; incomplete prepare does not mint a confirmable proposal identity."
+}

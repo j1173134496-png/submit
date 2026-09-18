@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://submit-flow-agent.local/contracts/worker_result.schema.json",
+  "title": "Submit Flow Agent Worker Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "status", "task_status", "summary", "outputs", "review_report", "error"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "need_review", "failed", "collecting_files", "ready_to_run", "running"]
+    },
+    "task_status": {
+      "type": "string",
+      "enum": ["completed", "need_review", "failed", "collecting_files", "ready_to_run", "running", "confirmed"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "review_report": {
+      "type": ["string", "null"]
+    },
+    "error": {
+      "type": ["string", "null"]
+    },
+    "task_json": {
+      "type": ["string", "null"]
+    },
+    "request_id": {
+      "type": ["string", "null"]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "completed"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "task_status": {"const": "completed"},
+          "review_report": {"type": "null"},
+          "error": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "need_review"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "task_status": {"const": "need_review"},
+          "review_report": {"type": "string", "minLength": 1},
+          "error": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "failed"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "task_status": {"const": "failed"},
+          "review_report": {"type": "null"},
+          "error": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ],
+  "description": "Worker-to-Gateway result contract. Result must be structured and must not be replaced by free-form natural language."
+}

@@ -1,0 +1,32 @@
+﻿{
+  "site_key": "xinan_high_school",
+  "month": "2026-05",
+  "proposal": {
+    "discount_rate": "0.95",
+    "effective_unit_price": "0.6648",
+    "base_unit_price": "0.6998"
+  },
+  "expected_prepare_fields": [
+    "proposal_id",
+    "proposal_hash",
+    "base_pricing_version",
+    "base_pricing_hash",
+    "expires_at",
+    "pricing"
+  ],
+  "expected_commit_snapshot_fields": [
+    "site_key",
+    "month",
+    "discount_rate",
+    "effective_unit_price",
+    "base_unit_price",
+    "pricing_version",
+    "pricing_source",
+    "confirmed_at",
+    "effective_month",
+    "proposal_id",
+    "proposal_hash",
+    "pricing_hash"
+  ],
+  "notes": "Commit must use only proposal_id; create/resolve must verify the committed proposal identity and pricing_hash in site_pricing history."
+}
